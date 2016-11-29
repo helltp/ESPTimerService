@@ -17,7 +17,7 @@ extern "C" {
 typedef void (*timerCallback)(void* pArg);
 
 /********************************************************************************************/
-/******************************** ESPTimer Stuff Starts *************************************/
+/****************************** ESPTimer struct definition **********************************/
 /********************************************************************************************/
 typedef struct ESPTimer{
 
@@ -29,17 +29,6 @@ typedef struct ESPTimer{
 	os_timer_t os_timer;
 
 }ESPTimer;
-
-/********************************* ESPTimer related functions *******************************/
-
-void ESPTimer_init(ESPTimer* timer, int timer_ms, int timer_id, bool periodic, timerCallback yourCallback);
-void ESPTimer_setTimer(ESPTimer* timer);
-void ESPTimer_unsetTimer(ESPTimer* timer);
-int  ESPTimer_getID(ESPTimer* timer);
-
-/********************************************************************************************/
-/********************************************************************************************/
-/********************************************************************************************/
 
 /********************************************************************************************/
 /****************************** ESPTimerService stuff starts ********************************/
@@ -56,7 +45,7 @@ typedef struct ESPTimerService{
 
 
 void ESPTS_init(ESPTimerService* timerService);
-void ESPTS_init(ESPTimerService* timerService, ESPTimer* tmrContainerIN, int size);
+void ESPTS_init(ESPTimerService* timerService, ESPTimer* tmrContainerIN, int size); //TODO not tested, do not use it
 void ESPTS_createTimer(ESPTimerService* timerService, int timer_ms, int timer_id, bool periodic, timerCallback yourCallback);
 void ESPTS_setTimer(ESPTimerService* timerService, int timer_id);
 void ESPTS_unsetTimer(ESPTimerService* timerService, int timer_id);
